@@ -1,0 +1,5328 @@
+{
+	"info": {
+		"_postman_id": "823802fb-9262-4ee9-a242-e69f940e8e90",
+		"name": "QA INCOURAGE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31002242",
+		"_collection_link": "https://cheree-team.postman.co/workspace/Cheree-Team~e0822228-b160-4cf7-8ad8-36c390774b37/collection/31002242-823802fb-9262-4ee9-a242-e69f940e8e90?action=share&source=collection_link&creator=31002242"
+	},
+	"item": [
+		{
+			"name": "ADMIN",
+			"item": [
+				{
+					"name": "REGISTER",
+					"item": [
+						{
+							"name": "register new user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test: Status code should be 200 on successful registration\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Test: Response should contain a JWT token\r",
+											"pm.test(\"Response contains a token\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.have.property(\"token\");\r",
+											"\r",
+											"    // Set the token as a global variable for future requests\r",
+											"    pm.globals.set(\"authToken\", jsonData.token);\r",
+											"});\r",
+											"\r",
+											"// Test: Response time should be within 500ms\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"firstname\": \"John\",\r\n  \"lastname\": \"Doe\",\r\n  \"contactNumber\": \"1234567890\",\r\n  \"address\": \"123 Main St\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"username\": \"johndoe\",\r\n  \"password\": \"securepassword\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "register new user missing lstname and password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test: Status code should be 200 on successful registration\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Test: Response should contain a JWT token\r",
+											"pm.test(\"Response contains a token\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.have.property(\"token\");\r",
+											"\r",
+											"    // Set the token as a global variable for future requests\r",
+											"    pm.globals.set(\"authToken\", jsonData.token);\r",
+											"});\r",
+											"\r",
+											"// Test: Response time should be within 500ms\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"firstname\": \"Johns\",\r\n \r\n  \"contactNumber\": \"1234567890\",\r\n  \"address\": \"123 Main St\",\r\n  \"username\": \"johndoee\",\r\n  \"password\": \"securepassword\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "register new user missing firstname",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test: Status code should be 200 on successful registration\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Test: Response should contain a JWT token\r",
+											"pm.test(\"Response contains a token\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.have.property(\"token\");\r",
+											"\r",
+											"    // Set the token as a global variable for future requests\r",
+											"    pm.globals.set(\"authToken\", jsonData.token);\r",
+											"});\r",
+											"\r",
+											"// Test: Response time should be within 500ms\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \r\n  \"lastname\": \"Doe\",\r\n  \"contactNumber\": \"1234567890\",\r\n  \"address\": \"123 Main St\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"username\": \"johndoet\",\r\n  \"password\": \"securepassword\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "register new user missing usernae",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test: Status code should be 200 on successful registration\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Test: Response should contain a JWT token\r",
+											"pm.test(\"Response contains a token\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.have.property(\"token\");\r",
+											"\r",
+											"    // Set the token as a global variable for future requests\r",
+											"    pm.globals.set(\"authToken\", jsonData.token);\r",
+											"});\r",
+											"\r",
+											"// Test: Response time should be within 500ms\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"firstname\": \"John\",\r\n  \"lastname\": \"Doe\",\r\n  \"contactNumber\": \"1234567890\",\r\n  \"address\": \"123 Main St\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"password\": \"securepassword\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "register user already in the database",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test: Status code should be 200 on successful registration\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"User already exist\");\r",
+											"});\r",
+											"\r",
+											"// Test: Response time should be within 500ms\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"firstname\": \"John\",\r\n  \"lastname\": \"Doe\",\r\n  \"contactNumber\": \"1234567890\",\r\n  \"address\": \"123 Main St\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"username\": \"johndoe\",\r\n  \"password\": \"securepassword\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "LOGIN",
+					"item": [
+						{
+							"name": "Login admin  wrong user name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Username or password is wrong\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"wronguser\",\r\n  \"password\": \"121397\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "/login",
+									"path": [
+										"login"
+									]
+								},
+								"description": "passing wrong user name and passpassword, espected fail with 401"
+							},
+							"response": []
+						},
+						{
+							"name": "Login admin wrong password  and user name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Username or password is wrong\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"wronguser\",\r\n  \"password\": \"wrongpassword\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"login"
+									]
+								},
+								"description": "passing wrong user name and passpassword, espected fail with 401"
+							},
+							"response": []
+						},
+						{
+							"name": "Login admin  wrong password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Username or password is wrong\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"postgres\",\r\n  \"password\": \"wrongpassword\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"login"
+									]
+								},
+								"description": "passing wrong user name and passpassword, espected fail with 401"
+							},
+							"response": []
+						},
+						{
+							"name": "Login admim correct passowrd and username",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Parse JSON response\r",
+											"let jsonData = pm.response.json();\r",
+											"\r",
+											"// Test if status code is 200 (successful login)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Test if response contains a JWT token\r",
+											"pm.test(\"Response contains a token\", function () {\r",
+											"    pm.expect(jsonData).to.have.property(\"token\");\r",
+											"\r",
+											"    // Set the token as a global variable\r",
+											"    pm.globals.set(\"authToken\", jsonData.token);\r",
+											"});\r",
+											"\r",
+											"// Test if response time is within acceptable range\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"johndoe\",\r\n  \"password\": \"securepassword\"\r\n}\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"login"
+									]
+								},
+								"description": "passing wrong user name and passpassword, espected fail with 401"
+							},
+							"response": []
+						},
+						{
+							"name": "login sql injection",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Parse JSON response\r",
+											"// There is no JSON response, so removing the JSON parsing\r",
+											"// Test if status code is 401 (unsuccessful login)\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"' OR '1'='1\",\r\n  \"password\": \"anything\"\r\n}\r\n\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"login"
+									]
+								},
+								"description": "passing wrong user name and passpassword, espected fail with 401"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ADD ADMIN",
+					"item": [
+						{
+							"name": "add new admin",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test: Status code should be 200 on successful registration\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Test: Response should contain a JWT token\r",
+											"pm.test(\"Response contains a token\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.have.property(\"token\");\r",
+											"\r",
+											"    // Set the token as a global variable for future requests\r",
+											"    pm.globals.set(\"authToken\", jsonData.token);\r",
+											"});\r",
+											"\r",
+											"// Test: Response time should be within 500ms\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"firstname\": \"John\",\r\n  \"lastname\": \"Doe\",\r\n  \"contactNumber\": \"1234567890\",\r\n  \"address\": \"123 Main St\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"username\": \"johndoe\",\r\n  \"password\": \"securepassword\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/addAdmin",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"addAdmin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add new user missing lstname and password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test: Status code should be 200 on successful registration\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Test: Response should contain a JWT token\r",
+											"pm.test(\"Response contains a token\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.have.property(\"token\");\r",
+											"\r",
+											"    // Set the token as a global variable for future requests\r",
+											"    pm.globals.set(\"authToken\", jsonData.token);\r",
+											"});\r",
+											"\r",
+											"// Test: Response time should be within 500ms\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"firstname\": \"John\",\r\n  \"lastname\": \"Doe\",\r\n  \"contactNumber\": \"1234567890\",\r\n  \"address\": \"123 Main St\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"username\": \"johndoe\",\r\n  \"password\": \"securepassword\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/addAdmin",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"addAdmin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "register new user missing firstname",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test: Status code should be 200 on successful registration\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Test: Response should contain a JWT token\r",
+											"pm.test(\"Response contains a token\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.have.property(\"token\");\r",
+											"\r",
+											"    // Set the token as a global variable for future requests\r",
+											"    pm.globals.set(\"authToken\", jsonData.token);\r",
+											"});\r",
+											"\r",
+											"// Test: Response time should be within 500ms\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"firstname\": \"John\",\r\n  \"lastname\": \"Doe\",\r\n  \"contactNumber\": \"1234567890\",\r\n  \"address\": \"123 Main St\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"username\": \"johndoe\",\r\n  \"password\": \"securepassword\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/addAdmin",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"addAdmin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "register new user missing usernae",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test: Status code should be 200 on successful registration\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Test: Response should contain a JWT token\r",
+											"pm.test(\"Response contains a token\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.have.property(\"token\");\r",
+											"\r",
+											"    // Set the token as a global variable for future requests\r",
+											"    pm.globals.set(\"authToken\", jsonData.token);\r",
+											"});\r",
+											"\r",
+											"// Test: Response time should be within 500ms\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"firstname\": \"John\",\r\n  \"lastname\": \"Doe\",\r\n  \"contactNumber\": \"1234567890\",\r\n  \"address\": \"123 Main St\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"password\": \"securepassword\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/addAdmin",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"addAdmin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "register user already in the database",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test: Status code should be 200 on successful registration\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"User already exist\");\r",
+											"});\r",
+											"\r",
+											"// Test: Response time should be within 500ms\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"firstname\": \"John\",\r\n  \"lastname\": \"Doe\",\r\n  \"contactNumber\": \"1234567890\",\r\n  \"address\": \"123 Main St\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"username\": \"johndoe\",\r\n  \"password\": \"securepassword\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/addAdmin",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"addAdmin"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "VIEW PROFILE",
+					"item": [
+						{
+							"name": "with authorization header",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Test if response contains user details\r",
+											"pm.test(\"Response should contain user details\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.have.property(\"id\");\r",
+											"    pm.expect(jsonData).to.have.property(\"username\");\r",
+											"    pm.expect(jsonData).to.have.property(\"email\");\r",
+											"});\r",
+											"\r",
+											"// Test if response time is within acceptable range\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "with  wrong authorization header",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body is correct\", function () {\r",
+											"    pm.response.to.have.body(\"Forbidden\");\r",
+											"});\r",
+											"\r",
+											"// Test if response time is within acceptable range\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZmlyc3RuYW1lIjoiSm9obiIsImxhc3RuYW1lIjoiRG9lIiwiY29udGFjdG51bWJlciI6MTIzNDU2Nzg5MCwiZW1haWwiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsImFkZHJlc3MiOiIxMjMgTWFpbiBTdCIsInBhc3N3b3JkIjoiJDJhJDEwJGNiT0tIdDlsRnA1d0ZYVktDNXZ2YWVpdmlrMkg4UXMuQ2JjbzVLQ3Z1T01BNldWSWRFaGxtIiwidXNlcm5hbWUiOiJ1bmRlZmluZWQiLCJpYXQiOjE3NDI5OTQwMDgsImV4cCI6MTc0MzAxNTYwOH0.wQ8VJMY3hgscVofe6gjgLWRVz_SQ7fmdN2ly5TCwT",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "without authorization header Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code should be 401 for missing token\", function () {\r",
+											"    pm.expect(pm.response.to.have.status(403));\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response should indicate authentication required\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid Token\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"profile"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "VIEW ALL ADMINS",
+					"item": [
+						{
+							"name": "with authorization header",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response contains an array of admins\r",
+											"pm.test(\"Response should contain an array of admins\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an(\"array\");\r",
+											"\r",
+											"    if (jsonData.length > 0) {\r",
+											"        pm.expect(jsonData[0]).to.have.property(\"id\");\r",
+											"        pm.expect(jsonData[0]).to.have.property(\"username\");\r",
+											"        pm.expect(jsonData[0]).to.have.property(\"email\");\r",
+											"    }\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response time is within an acceptable range\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/allAdmins",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"allAdmins"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "with  wrong authorization header",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body is correct\", function () {\r",
+											"    pm.response.to.have.body(\"Forbidden\");\r",
+											"});\r",
+											"\r",
+											"// Test if response time is within acceptable range\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZmlyc3RuYW1lIjoiSm9obiIsImxhc3RuYW1lIjoiRG9lIiwiY29udGFjdG51bWJlciI6MTIzNDU2Nzg5MCwiZW1haWwiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsImFkZHJlc3MiOiIxMjMgTWFpbiBTdCIsInBhc3N3b3JkIjoiJDJhJDEwJGNiT0tIdDlsRnA1d0ZYVktDNXZ2YWVpdmlrMkg4UXMuQ2JjbzVLQ3Z1T01BNldWSWRFaGxtIiwidXNlcm5hbWUiOiJ1bmRlZmluZWQiLCJpYXQiOjE3NDI5OTQwMDgsImV4cCI6MTc0MzAxNTYwOH0.wQ8VJMY3hgscVofe6gjgLWRVz_SQ7fmdN2ly5TCwT",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/allAdmins",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"allAdmins"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "without authorization header Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code should be 401 for missing token\", function () {\r",
+											"    pm.expect(pm.response.to.have.status(403));\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response should indicate authentication required\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid Token\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/allAdmins",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"allAdmins"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE AND ADMIN",
+					"item": [
+						{
+							"name": "delete an none existing admin",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response should confirm deletion\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.msg).to.include(\"Deleted admin with an id of\");\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response time is within an acceptable range\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/admins/22666666666666666",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admins",
+										"22666666666666666"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete existing id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response should confirm deletion\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.msg).to.include(\"Deleted admin with an id of\");\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response time is within an acceptable range\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/admins/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admins",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete existing id as astring",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"\r",
+											"let startTime = Date.now();\r",
+											"\r",
+											"\r",
+											"    let endTime = Date.now();\r",
+											"    let responseTime = endTime - startTime;\r",
+											"\r",
+											"    pm.test(\"Request should complete within 4 seconds\", function () {\r",
+											"        pm.expect(responseTime).to.be.below(4000);\r",
+											"    });\r",
+											"\r",
+											"    pm.test(\"Status code should be 400 for invalid admin ID\", function () {\r",
+											"        pm.expect(res.status).to.eql(400);\r",
+											"    });\r",
+											"\r",
+											"    pm.test(\"Response should indicate invalid ID\", function () {\r",
+											"        pm.expect(res.json().error).to.include(\"Invalid admin ID\");\r",
+											"    });\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/admins/1we",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admins",
+										"1we"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete witout id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/admins/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admins",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "CLIENT",
+			"item": [
+				{
+					"name": "ADD CLIENT",
+					"item": [
+						{
+							"name": "add a new client",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test if status code is 201 (Created)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Test if response contains the new client details\r",
+											"// ✅ Test if response contains client details\r",
+											"pm.test(\"Response should contain client details\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"\r",
+											"    // Ensure 'rows' is present and contains at least one record\r",
+											"    pm.expect(jsonData).to.have.property(\"rows\");\r",
+											"    pm.expect(jsonData.rows).to.be.an(\"array\").that.is.not.empty;\r",
+											"\r",
+											"    // Access first client object inside 'rows' array\r",
+											"    let client = jsonData.rows[0];\r",
+											"\r",
+											"    pm.expect(client).to.have.property(\"id\");\r",
+											"    pm.expect(client).to.have.property(\"username\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"firstname\": \"Johnx\",\r\n  \"lastname\": \"Doe\",\r\n  \"contactNumber\": \"1234567890\",\r\n  \"address\": \"123 Main St\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"username\": \"johndoext\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/addClient",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"addClient"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add a new client without any data",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test if status code is 201 (Created)\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/addClient",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"addClient"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add a new client  without user name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test if status code is 201 (Created)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Test if response contains the new client details\r",
+											"// ✅ Test if response contains client details\r",
+											"pm.test(\"Response should contain client details\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"\r",
+											"    // Ensure 'rows' is present and contains at least one record\r",
+											"    pm.expect(jsonData).to.have.property(\"rows\");\r",
+											"    pm.expect(jsonData.rows).to.be.an(\"array\").that.is.not.empty;\r",
+											"\r",
+											"    // Access first client object inside 'rows' array\r",
+											"    let client = jsonData.rows[0];\r",
+											"\r",
+											"    pm.expect(client).to.have.property(\"id\");\r",
+											"    pm.expect(client).to.have.property(\"username\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"firstname\": \"Johnx\",\r\n  \"lastname\": \"Doe\",\r\n  \"contactNumber\": \"1234567890\",\r\n  \"address\": \"123 Main St\",\r\n  \"email\": \"john.doe@example.com\"\r\n  \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/addClient",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"addClient"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "clent already exists in the database",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test if status code is 201 (Created)\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"User already exist\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"firstname\": \"Johnx\",\r\n  \"lastname\": \"Doe\",\r\n  \"contactNumber\": \"1234567890\",\r\n  \"address\": \"123 Main St\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"username\": \"johndoext\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/addClient",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"addClient"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ALL CLIENTS",
+					"item": [
+						{
+							"name": "view all clients",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response is an array of clients\r",
+											"pm.test(\"Response should contain an array of clients\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an(\"array\").that.is.not.empty;\r",
+											"\r",
+											"    // Check if first client object has required properties\r",
+											"    let client = jsonData[0];\r",
+											"\r",
+											"    pm.test(\"Each client should have necessary properties\", function () {\r",
+											"        pm.expect(client).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"        pm.expect(client).to.have.property(\"firstname\").that.is.a(\"string\");\r",
+											"        pm.expect(client).to.have.property(\"lastname\").that.is.a(\"string\");\r",
+											"        pm.expect(client).to.have.property(\"username\").that.is.a(\"string\");\r",
+											"        pm.expect(client).to.have.property(\"email\").that.is.a(\"string\");\r",
+											"        pm.expect(client).to.have.property(\"contactnumber\");\r",
+											"        pm.expect(client).to.have.property(\"address\").that.is.a(\"string\");\r",
+											"    });\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response time is within acceptable range\r",
+											"pm.test(\"Response time should be under 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/allClients",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"allClients"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "view all clients without auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test if status code is 201 (Created)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.err).to.eql(\"Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/allClients",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"allClients"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "view all clients with wrong auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Test if status code is 201 (Created)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.err).to.eql(\"Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "2342341323423412",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/allClients",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"allClients"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GET CLIENT BY ID",
+					"item": [
+						{
+							"name": "with correct id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response contains client details\r",
+											"pm.test(\"Response should contain a valid client\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an(\"object\");\r",
+											"\r",
+											"    pm.expect(jsonData).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"    pm.expect(jsonData).to.have.property(\"firstname\").that.is.a(\"string\");\r",
+											"    pm.expect(jsonData).to.have.property(\"lastname\").that.is.a(\"string\");\r",
+											"    pm.expect(jsonData).to.have.property(\"email\").that.is.a(\"string\");\r",
+											"    pm.expect(jsonData).to.have.property(\"username\").that.is.a(\"string\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/client/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"client",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "with wrong id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code should be 404 for non-existent client\", function () {\r",
+											"        pm.expect(res.status).to.eql(404);\r",
+											"    });"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/client/1989999999998888888888888",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"client",
+										"1989999999998888888888888"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "withouth auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.err).to.eql(\"Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/client/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"client",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GET CLIENT BY  EMAIL",
+					"item": [
+						{
+							"name": "with correct email",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response contains client details\r",
+											"pm.test(\"Response should contain a valid client\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an(\"object\");\r",
+											"\r",
+											"    pm.expect(jsonData).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"    pm.expect(jsonData).to.have.property(\"firstname\").that.is.a(\"string\");\r",
+											"    pm.expect(jsonData).to.have.property(\"lastname\").that.is.a(\"string\");\r",
+											"    pm.expect(jsonData).to.have.property(\"email\").that.is.a(\"string\");\r",
+											"    pm.expect(jsonData).to.have.property(\"username\").that.is.a(\"string\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/email/elonmusk@gmail.com",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"email",
+										"elonmusk@gmail.com"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "with wrong email",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.err).to.eql(\"Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/email/elonmusk@gmail.com55",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"email",
+										"elonmusk@gmail.com55"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "withouth auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.err).to.eql(\"Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/email/elonmusk@gmail.com",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"email",
+										"elonmusk@gmail.com"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "UPDATE CLIENT",
+					"item": [
+						{
+							"name": "with correct id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response contains updated client details\r",
+											"pm.test(\"Response should contain updated client details\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an(\"array\").that.is.not.empty;\r",
+											"\r",
+											"    let client = jsonData[0];\r",
+											"    pm.expect(client).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"    pm.expect(client).to.have.property(\"firstname\").that.is.a(\"string\");\r",
+											"    pm.expect(client).to.have.property(\"lastname\").that.is.a(\"string\");\r",
+											"    pm.expect(client).to.have.property(\"email\").that.is.a(\"string\");\r",
+											"    pm.expect(client).to.have.property(\"contactnumber\").that.is.a(\"number\");\r",
+											"    pm.expect(client).to.have.property(\"address\").that.is.a(\"string\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"firstname\": \"John\",\r\n  \"lastname\": \"Doe\",\r\n  \"contactNumber\": \"111222\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"address\": \"456 New Street\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clients/4",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clients",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "with correct id no auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response contains updated client details\r",
+											"pm.test(\"Response should contain updated client details\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an(\"array\").that.is.not.empty;\r",
+											"\r",
+											"    let client = jsonData[0];\r",
+											"    pm.expect(client).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"    pm.expect(client).to.have.property(\"firstname\").that.is.a(\"string\");\r",
+											"    pm.expect(client).to.have.property(\"lastname\").that.is.a(\"string\");\r",
+											"    pm.expect(client).to.have.property(\"email\").that.is.a(\"string\");\r",
+											"    pm.expect(client).to.have.property(\"contactnumber\").that.is.a(\"number\");\r",
+											"    pm.expect(client).to.have.property(\"address\").that.is.a(\"string\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"firstname\": \"John\",\r\n  \"lastname\": \"Doe\",\r\n  \"contactNumber\": \"98765\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"address\": \"456 New Street\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clients/4",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clients",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "with correct id wrong auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response contains updated client details\r",
+											"pm.test(\"Response should contain updated client details\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an(\"array\").that.is.not.empty;\r",
+											"\r",
+											"    let client = jsonData[0];\r",
+											"    pm.expect(client).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"    pm.expect(client).to.have.property(\"firstname\").that.is.a(\"string\");\r",
+											"    pm.expect(client).to.have.property(\"lastname\").that.is.a(\"string\");\r",
+											"    pm.expect(client).to.have.property(\"email\").that.is.a(\"string\");\r",
+											"    pm.expect(client).to.have.property(\"contactnumber\").that.is.a(\"number\");\r",
+											"    pm.expect(client).to.have.property(\"address\").that.is.a(\"string\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "dsfseaszee",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"firstname\": \"Johnsssssssssss\",\r\n  \"lastname\": \"Doe\",\r\n  \"contactNumber\": \"98765\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"address\": \"456 New Street\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clients/4",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clients",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "with wrong id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"firstname\": \"John\",\r\n  \"lastname\": \"Doe\",\r\n  \"contactNumber\": 9876543210,\r\n  \"email\": \"john.doe@example.com\",\r\n  \"address\": \"456 New Street\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/clients/4999999999999999999999999999999999",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clients",
+										"4999999999999999999999999999999999"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE CLIENT",
+					"item": [
+						{
+							"name": "correct id and no loan",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.msg).to.eql(\"Deleted client with an id of 3\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/clients/3",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clients",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "correct id and and already deleted",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/clients/3",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clients",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "correct id and with loan",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/clients/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clients",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "LOANS",
+			"item": [
+				{
+					"name": "CREATE LOANS",
+					"item": [
+						{
+							"name": "create a loan",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 201 (Success)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response contains loan details\r",
+											"pm.test(\"Response should contain loan details\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an(\"object\");\r",
+											"\r",
+											"    pm.expect(jsonData).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"    pm.expect(jsonData).to.have.property(\"client_id\").that.is.a(\"number\");\r",
+											"    pm.expect(jsonData).to.have.property(\"type\").that.is.a(\"string\");\r",
+											"    pm.expect(jsonData).to.have.property(\"status\").that.is.a(\"string\");\r",
+											"\r",
+											"    // 🔹 Convert values to numbers before checking\r",
+											"    pm.expect(Number(jsonData.gross_loan)).to.eql(5000.00);\r",
+											"    pm.expect(Number(jsonData.balance)).to.eql(5000.00);\r",
+											"    pm.expect(Number(jsonData.amort)).to.eql(2500.00);\r",
+											"\r",
+											"    pm.expect(jsonData).to.have.property(\"terms\").that.is.a(\"number\");\r",
+											"    pm.expect(jsonData).to.have.property(\"date_released\");\r",
+											"    pm.expect(jsonData).to.have.property(\"maturity_date\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"client_id\": 1,\r\n  \"type\": \"Personal Loan\",\r\n  \"status\": \"Pending\",\r\n  \"gross_loan\": 5000,\r\n  \"balance\": 5000,\r\n  \"amort\": 2500,\r\n  \"terms\": 12,\r\n  \"date_released\": \"2023-02-04\",\r\n  \"maturity_date\": \"2024-02-04\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/loans/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "sql injection",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 201 (Success)\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"client_id\": 1,\r\n  \"type\": \"Personal Loan\",\r\n  \"status\": \"client_id\": \"1; DROP TABLE loans; --\",\r\n  \"gross_loan\": 5000,\r\n  \"balance\": 5000,\r\n  \"amort\": 2500,\r\n  \"terms\": 12,\r\n  \"date_released\": \"2023-02-04\",\r\n  \"maturity_date\": \"2024-02-04\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/loans/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create a loan with no auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 201 (Success)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.err).to.eql(\"Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"client_id\": 1,\r\n  \"type\": \"Personal Loan\",\r\n  \"status\": \"Pending\",\r\n  \"gross_loan\": 5000,\r\n  \"balance\": 5000,\r\n  \"amort\": 2500,\r\n  \"terms\": 12,\r\n  \"date_released\": \"2023-02-04\",\r\n  \"maturity_date\": \"2024-02-04\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/loans/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create a loan without detaisl",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 201 (Success)\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"client_id\": 1,\r\n  \"type\": \"Personal Loan\",\r\n  \"status\": \"Pending\",\r\n  \"date_released\": \"2023-02-04\",\r\n  \"maturity_date\": \"2024-02-04\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/loans/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CREATE LOANS FOR SPECIFIC CLIENT",
+					"item": [
+						{
+							"name": "create a loan",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 201 (Success)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response contains loan details\r",
+											"pm.test(\"Response should contain loan details\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an(\"object\");\r",
+											"\r",
+											"    pm.expect(jsonData).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"    pm.expect(jsonData).to.have.property(\"client_id\").that.is.a(\"number\");\r",
+											"    pm.expect(jsonData).to.have.property(\"type\").that.is.a(\"string\");\r",
+											"    pm.expect(jsonData).to.have.property(\"status\").that.is.a(\"string\");\r",
+											"\r",
+											"    // 🔹 Convert values to numbers before checking\r",
+											"    pm.expect(Number(jsonData.gross_loan)).to.eql(5000.00);\r",
+											"    pm.expect(Number(jsonData.balance)).to.eql(5000.00);\r",
+											"    pm.expect(Number(jsonData.amort)).to.eql(2500.00);\r",
+											"\r",
+											"    pm.expect(jsonData).to.have.property(\"terms\").that.is.a(\"number\");\r",
+											"    pm.expect(jsonData).to.have.property(\"date_released\");\r",
+											"    pm.expect(jsonData).to.have.property(\"maturity_date\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"client_id\": 1,\r\n  \"type\": \"Personal Loan\",\r\n  \"status\": \"Pending\",\r\n  \"gross_loan\": 5000,\r\n  \"balance\": 5000,\r\n  \"amort\": 2500,\r\n  \"terms\": 12,\r\n  \"date_released\": \"2023-02-04\",\r\n  \"maturity_date\": \"2024-02-04\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/loans/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create a loan invlaid client",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 201 (Success)\r",
+											"pm.test(\"Status code is 40\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"client_id\": 1,\r\n  \"type\": \"Personal Loan\",\r\n  \"status\": \"Pending\",\r\n  \"gross_loan\": 5000,\r\n  \"balance\": 5000,\r\n  \"amort\": 2500,\r\n  \"terms\": 12,\r\n  \"date_released\": \"2023-02-04\",\r\n  \"maturity_date\": \"2024-02-04\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/loans/73999",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										"73999"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "sql injection",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 201 (Success)\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"client_id\": 1,\r\n  \"type\": \"Personal Loan\",\r\n  \"status\": \"client_id\": \"1; DROP TABLE loans; --\",\r\n  \"gross_loan\": 5000,\r\n  \"balance\": 5000,\r\n  \"amort\": 2500,\r\n  \"terms\": 12,\r\n  \"date_released\": \"2023-02-04\",\r\n  \"maturity_date\": \"2024-02-04\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/loans/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create a loan with no auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 201 (Success)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.err).to.eql(\"Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"client_id\": 1,\r\n  \"type\": \"Personal Loan\",\r\n  \"status\": \"Pending\",\r\n  \"gross_loan\": 5000,\r\n  \"balance\": 5000,\r\n  \"amort\": 2500,\r\n  \"terms\": 12,\r\n  \"date_released\": \"2023-02-04\",\r\n  \"maturity_date\": \"2024-02-04\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/loans/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create a loan without detaisl",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 201 (Success)\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"client_id\": 1,\r\n  \"type\": \"Personal Loan\",\r\n  \"status\": \"Pending\",\r\n  \"date_released\": \"2023-02-04\",\r\n  \"maturity_date\": \"2024-02-04\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/loans/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GET ALL LOAN",
+					"item": [
+						{
+							"name": "get all loans",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response contains an array of loans\r",
+											"pm.test(\"Response should contain an array of loans\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an(\"array\").that.is.not.empty;\r",
+											"\r",
+											"    // Check first loan object\r",
+											"    let loan = jsonData[0];\r",
+											"\r",
+											"    if (loan) {\r",
+											"        pm.expect(loan).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"        pm.expect(loan).to.have.property(\"firstname\").that.is.a(\"string\");\r",
+											"        pm.expect(loan).to.have.property(\"lastname\").that.is.a(\"string\");\r",
+											"        pm.expect(loan).to.have.property(\"type\").that.is.a(\"string\");\r",
+											"\r",
+											"        // 🔹 Convert to number before assertion\r",
+											"        pm.expect(Number(loan.gross_loan)).to.be.a(\"number\");\r",
+											"        pm.expect(Number(loan.amort)).to.be.a(\"number\");\r",
+											"        pm.expect(Number(loan.balance)).to.be.a(\"number\");\r",
+											"\r",
+											"        pm.expect(loan).to.have.property(\"terms\").that.is.a(\"number\");\r",
+											"        pm.expect(loan).to.have.property(\"date_released\");\r",
+											"        pm.expect(loan).to.have.property(\"maturity_date\");\r",
+											"        pm.expect(loan).to.have.property(\"status\").that.is.a(\"string\");\r",
+											"    }\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/allLoans",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"allLoans"
+									],
+									"query": [
+										{
+											"key": "A",
+											"value": "UT",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get loan no auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.err).to.eql(\"Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/allLoans",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"allLoans"
+									],
+									"query": [
+										{
+											"key": "A",
+											"value": "UT",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GET ALL LOANS  OF CLIENT",
+					"item": [
+						{
+							"name": "get all loans",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response contains an array of loans\r",
+											"pm.test(\"Response should contain an array of loans for a client\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an(\"array\");\r",
+											"\r",
+											"    if (jsonData.length > 0) {\r",
+											"        let loan = jsonData[0];\r",
+											"\r",
+											"        pm.expect(loan).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"        pm.expect(loan).to.have.property(\"firstname\").that.is.a(\"string\");\r",
+											"        pm.expect(loan).to.have.property(\"type\").that.is.a(\"string\");\r",
+											"\r",
+											"        // 🔹 Convert string numbers to actual numbers before assertion\r",
+											"        pm.expect(Number(loan.gross_loan)).to.be.a(\"number\");\r",
+											"        pm.expect(Number(loan.amort)).to.be.a(\"number\");\r",
+											"        pm.expect(Number(loan.balance)).to.be.a(\"number\");\r",
+											"\r",
+											"        pm.expect(loan).to.have.property(\"terms\").that.is.a(\"number\");\r",
+											"        pm.expect(loan).to.have.property(\"date_released\");\r",
+											"        pm.expect(loan).to.have.property(\"maturity_date\");\r",
+											"        pm.expect(loan).to.have.property(\"status\").that.is.a(\"string\");\r",
+											"    }\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/loans/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										"1"
+									],
+									"query": [
+										{
+											"key": "A",
+											"value": "UT",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "invalid client id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"// "
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/loans/1999",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										"1999"
+									],
+									"query": [
+										{
+											"key": "A",
+											"value": "UT",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get loan no auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.err).to.eql(\"Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/loans/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										"1"
+									],
+									"query": [
+										{
+											"key": "A",
+											"value": "UT",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GET LOAN BY ID",
+					"item": [
+						{
+							"name": "correct loan id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var loan = pm.response.json();\r",
+											"    pm.expect(loan).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"        pm.expect(loan).to.have.property(\"firstname\").that.is.a(\"string\");\r",
+											"        pm.expect(loan).to.have.property(\"type\").that.is.a(\"string\");\r",
+											"\r",
+											"        // 🔹 Convert string numbers to actual numbers before assertion\r",
+											"        pm.expect(Number(loan.gross_loan)).to.be.a(\"number\");\r",
+											"        pm.expect(Number(loan.amort)).to.be.a(\"number\");\r",
+											"        pm.expect(Number(loan.balance)).to.be.a(\"number\");\r",
+											"\r",
+											"        pm.expect(loan).to.have.property(\"terms\").that.is.a(\"number\");\r",
+											"        pm.expect(loan).to.have.property(\"date_released\");\r",
+											"        pm.expect(loan).to.have.property(\"maturity_date\");\r",
+											"        pm.expect(loan).to.have.property(\"status\").that.is.a(\"string\")\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/loan/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loan",
+										"1"
+									],
+									"query": [
+										{
+											"key": "A",
+											"value": "UT",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "invalid loan id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/loan/1999",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loan",
+										"1999"
+									],
+									"query": [
+										{
+											"key": "A",
+											"value": "UT",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get loan no auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.err).to.eql(\"Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/loan/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loan",
+										"1"
+									],
+									"query": [
+										{
+											"key": "A",
+											"value": "UT",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GET LOAN MATURITY DATE OF LOANS",
+					"item": [
+						{
+							"name": "with auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response contains an array\r",
+											"pm.test(\"Response should contain an array of maturity dates\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an(\"array\");\r",
+											"\r",
+											"    if (jsonData.length > 0) {\r",
+											"        let loan = jsonData[0];\r",
+											"\r",
+											"        pm.expect(loan).to.have.property(\"maturity_date\");\r",
+											"    }\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/dates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"dates"
+									],
+									"query": [
+										{
+											"key": "A",
+											"value": "UT",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "no auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.err).to.eql(\"Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/dates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"dates"
+									],
+									"query": [
+										{
+											"key": "A",
+											"value": "UT",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "UPDATE A LOAN",
+					"item": [
+						{
+							"name": "with auth ad correct loan id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response contains updated loan details\r",
+											"pm.test(\"Response should contain updated loan details\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an(\"array\").that.is.not.empty;\r",
+											"\r",
+											"    let loan = jsonData[0];\r",
+											"\r",
+											"    pm.expect(loan).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"    pm.expect(loan).to.have.property(\"client_id\").that.is.a(\"number\");\r",
+											"    pm.expect(loan).to.have.property(\"type\").that.is.a(\"string\");\r",
+											"\r",
+											"    // 🔹 Convert string numbers to actual numbers before assertion\r",
+											"    pm.expect(Number(loan.balance)).to.be.a(\"number\");\r",
+											"    pm.expect(Number(loan.gross_loan)).to.be.a(\"number\");\r",
+											"    pm.expect(Number(loan.amort)).to.be.a(\"number\");\r",
+											"\r",
+											"    pm.expect(loan).to.have.property(\"terms\").that.is.a(\"number\");\r",
+											"    pm.expect(loan).to.have.property(\"date_released\");\r",
+											"    pm.expect(loan).to.have.property(\"maturity_date\");\r",
+											"    pm.expect(loan).to.have.property(\"status\").that.is.a(\"string\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"type\": \"Personal Loan\",\r\n  \"balance\": 3000,\r\n  \"gross_loan\": 5500,\r\n  \"amort\": 2500,\r\n  \"terms\": 12,\r\n  \"date_released\": \"2023-02-04\",\r\n  \"maturity_date\": \"2024-02-04\",\r\n  \"status\": \"Active\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/loans/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "withouth auth ad correct loan id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.err).to.eql(\"Invalid Token\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"type\": \"Personal Loan\",\r\n  \"balance\": 3000,\r\n  \"gross_loan\": 5000,\r\n  \"amort\": 2500,\r\n  \"terms\": 12,\r\n  \"date_released\": \"2023-02-04\",\r\n  \"maturity_date\": \"2024-02-04\",\r\n  \"status\": \"Active\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/loans/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "with auth and incorrect loan id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (Success)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"type\": \"Personal Loan\",\r\n  \"balance\": 3000,\r\n  \"gross_loan\": 5000,\r\n  \"amort\": 2500,\r\n  \"terms\": 12,\r\n  \"date_released\": \"2023-02-04\",\r\n  \"maturity_date\": \"2024-02-04\",\r\n  \"status\": \"Active\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/loans/1999",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										"1999"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE A LOAN",
+					"item": [
+						{
+							"name": "without Authorization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.err).to.eql(\"Invalid Token\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/loans/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "invalid auth token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "wewewewf",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/loans/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "with valid Authorization and invalid loan id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Unauthorized deletion should return a message\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    if (typeof jsonData === \"string\") {\r",
+											"        pm.expect(jsonData).to.equal(\"You are not authorize to delete loan\");\r",
+											"    }\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/loans/1999",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										"1999"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "with valid Authorization and valid loan id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify loan deletion message\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.msg).to.include(\"Deleted loan with an id of\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/loans/4",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "loan id with connected payments",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify loan deletion message\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.msg).to.include(\"Deleted loan with an id of\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/loans/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "PAYMENTS",
+			"item": [
+				{
+					"name": "CREATE PAYMENT ON LOAN WITH CLIENT ID",
+					"item": [
+						{
+							"name": "with correct loan id and auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 201 (Created)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response contains payment details\r",
+											"pm.test(\"Response should contain new payment details\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"    \r",
+											"    // Ensure amount and new_balance are properly converted to numbers\r",
+											"    pm.expect(Number(jsonData.amount)).to.be.a(\"number\");\r",
+											"    pm.expect(Number(jsonData.new_balance)).to.be.a(\"number\");\r",
+											"\r",
+											"    pm.expect(jsonData).to.have.property(\"collection_date\").that.is.a(\"string\");\r",
+											"    pm.expect(jsonData).to.have.property(\"collected_by\").that.is.a(\"string\");\r",
+											"    pm.expect(jsonData).to.have.property(\"method\").that.is.a(\"string\");\r",
+											"    pm.expect(jsonData).to.have.property(\"client_id\").that.is.a(\"number\");\r",
+											"    pm.expect(jsonData).to.have.property(\"loan_id\").that.is.a(\"number\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": 500.00,\r\n  \"collection_date\": \"2024-03-25T10:30:00.000Z\",\r\n  \"collected_by\": \"John Doe\",\r\n  \"new_balance\": 2500.00,\r\n  \"method\": \"Cash\",\r\n  \"client_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/payments/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Wrong client id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 201 (Created)\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": 500.00,\r\n  \"collection_date\": \"2024-03-25T10:30:00.000Z\",\r\n  \"collected_by\": \"John Doe\",\r\n  \"new_balance\": 2500.00,\r\n  \"method\": \"Cash\",\r\n  \"client_id\": 1999\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/payments/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "using string as amount",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 201 (Created)\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": \"girl\",\r\n  \"collection_date\": \"2024-03-25T10:30:00.000Z\",\r\n  \"collected_by\": \"John Doe\",\r\n  \"new_balance\": \"boy\",\r\n  \"method\": \"Cash\",\r\n  \"client_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/payments/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Unauthorized Access",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.err).to.eql(\"Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": 500.00,\r\n  \"collection_date\": \"2024-03-25T10:30:00.000Z\",\r\n  \"collected_by\": \"John Doe\",\r\n  \"new_balance\": 2500.00,\r\n  \"method\": \"Cash\",\r\n  \"client_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/payments/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Invalid Loan ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											" pm.test(\"Status code should be 400 for invalid loan ID\", function () {\r",
+											"        pm.expect(res.status).to.eql(400);\r",
+											"    });"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": 500.00,\r\n  \"collection_date\": \"2024-03-25T10:30:00.000Z\",\r\n  \"collected_by\": \"John Doe\",\r\n  \"new_balance\": 2500.00,\r\n  \"method\": \"Cash\",\r\n  \"client_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/payments/19999",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments",
+										"19999"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CREATE PAYMENT ON LOAN",
+					"item": [
+						{
+							"name": "with correct loan id and auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 201 (Created)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": 500.00,\r\n  \"collection_date\": \"2024-03-25\",\r\n  \"collected_by\": \"John Doe\",\r\n  \"new_balance\": 3000.00,\r\n  \"method\": \"Bank Transfer\",\r\n  \"loan_id\": 3,\r\n  \"client_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/loans/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "using string as amount",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 201 (Created)\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": 33,\r\n  \"collection_date\": \"2024-03-25T10:30:00.000Z\",\r\n  \"collected_by\": \"John Doe\",\r\n  \"new_balance\": 23,\r\n  \"method\": \"Cash\",\r\n  \"client_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/loans/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Unauthorized Access",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.err).to.eql(\"Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": 500.00,\r\n  \"collection_date\": \"2024-03-25T10:30:00.000Z\",\r\n  \"collected_by\": \"John Doe\",\r\n  \"new_balance\": 2500.00,\r\n  \"method\": \"Cash\",\r\n  \"client_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/loans/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loans",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Invalid Loan ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											" pm.test(\"Status code should be 400 for invalid loan ID\", function () {\r",
+											"        pm.expect(res.status).to.eql(400);\r",
+											"    });"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": 500.00,\r\n  \"collection_date\": \"2024-03-25\",\r\n  \"collected_by\": \"John Doe\",\r\n  \"new_balance\": 3000.00,\r\n  \"method\": \"Bank Transfer\",\r\n  \"loan_id\": 1999\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/payments/19999",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments",
+										"19999"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "VIEW PAYMENT OF LOAN AND CLIENT",
+					"item": [
+						{
+							"name": "correct client and loan id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response is an array (indicating multiple payments)\r",
+											"pm.test(\"Response should be an array\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an(\"array\");\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if the first payment contains required properties\r",
+											"pm.test(\"Each payment should contain necessary fields\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    if (jsonData.length > 0) {\r",
+											"        let payment = jsonData[0]; // Check the first payment record\r",
+											"        pm.expect(payment).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"        pm.expect(payment).to.have.property(\"client_id\").that.is.a(\"number\");\r",
+											"        pm.expect(payment).to.have.property(\"loan_id\").that.is.a(\"number\");\r",
+											"        pm.expect(payment).to.have.property(\"collection_date\").that.is.a(\"string\");\r",
+											"        pm.expect(payment).to.have.property(\"collected_by\").that.is.a(\"string\");\r",
+											"        pm.expect(payment).to.have.property(\"method\").that.is.a(\"string\");\r",
+											"\r",
+											"         pm.expect(Number(payment.amount)).to.be.a(\"number\");\r",
+											"        pm.expect(Number(payment.new_balance)).to.be.a(\"number\");\r",
+											"    } else {\r",
+											"        pm.test.skip(\"No payments found for this client and loan.\");\r",
+											"    }\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/payment/1/1/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payment",
+										"1",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "correct client and invalid loan id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/payment/1/199/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payment",
+										"1",
+										"199",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "correct invalid client and  loan id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/payment/1999/1/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payment",
+										"1999",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "correct invalid client and invalid loan id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/payment/1999/1999/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payment",
+										"1999",
+										"1999",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "no authorization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.err).to.eql(\"Invalid Token\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/payment/1999/1999/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payment",
+										"1999",
+										"1999",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "VIEW ALL PAYMENTS",
+					"item": [
+						{
+							"name": "No Authorization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.err).to.eql(\"Invalid Token\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/allPayments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"allPayments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Wrong auth token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "2342342424",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/allPayments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"allPayments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "with authorization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response is an array\r",
+											"pm.test(\"Response should be an array\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an(\"array\");\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if each payment contains required fields\r",
+											"pm.test(\"Each payment should have necessary fields\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    if (jsonData.length > 0) {\r",
+											"        let payment = jsonData[0];\r",
+											"        pm.expect(payment).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"        pm.expect(payment).to.have.property(\"firstname\").that.is.a(\"string\");\r",
+											"        pm.expect(payment).to.have.property(\"lastname\").that.is.a(\"string\");\r",
+											"        pm.expect(payment).to.have.property(\"amount\");\r",
+											"        pm.expect(payment).to.have.property(\"collection_date\").that.is.a(\"string\");\r",
+											"        pm.expect(payment).to.have.property(\"new_balance\");\r",
+											"        pm.expect(payment).to.have.property(\"collected_by\").that.is.a(\"string\");\r",
+											"        pm.expect(payment).to.have.property(\"method\").that.is.a(\"string\");\r",
+											"        pm.expect(payment).to.have.property(\"loan_id\").that.is.a(\"number\");\r",
+											"    } else {\r",
+											"        pm.test.skip(\"No payments found.\");\r",
+											"    }\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/allPayments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"allPayments"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "VIEW A CLIENT PAYMENT OF A LOAN",
+					"item": [
+						{
+							"name": "No authorization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.err).to.eql(\"Invalid Token\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/payments/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "wrong authorization token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "33333333333333333333",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/payments/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "with authorization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response is an array\r",
+											"pm.test(\"Response should be an array\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an(\"array\");\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if each payment contains required fields\r",
+											"pm.test(\"Each payment should have necessary fields\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    if (jsonData.length > 0) {\r",
+											"        let payment = jsonData[0];\r",
+											"        pm.expect(payment).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"        pm.expect(payment).to.have.property(\"amount\");\r",
+											"        pm.expect(payment).to.have.property(\"collection_date\").that.is.a(\"string\");\r",
+											"        pm.expect(payment).to.have.property(\"new_balance\");\r",
+											"        pm.expect(payment).to.have.property(\"collected_by\").that.is.a(\"string\");\r",
+											"        pm.expect(payment).to.have.property(\"method\").that.is.a(\"string\");\r",
+											"        pm.expect(payment).to.have.property(\"client_id\").that.is.a(\"number\");\r",
+											"    } else {\r",
+											"        pm.test.skip(\"No payments found for this client.\");\r",
+											"    }\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/payments/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Invalid client id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/payments/1999",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments",
+										"1999"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE A PAYMENT",
+					"item": [
+						{
+							"name": "without Authorization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.err).to.eql(\"Invalid Token\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/payment/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payment",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "invalid auth token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "wewewewf",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/payment/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payment",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "with valid Authorization and invalid payment id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test('Status code is 400', function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response body contains unauthorized message\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"authorize to delete loan\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/payment/1999",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payment",
+										"1999"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "with valid Authorization and valid payment id Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.msg).to.include(\"Deleted payment with an id of\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/payment/4",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payment",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "UPDATE LOAN PAYMENTS",
+					"item": [
+						{
+							"name": "withouth auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.err).to.eql(\"Invalid Token\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/loan/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loan",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "invalid auth token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});// ✅ Test if response body contains \"Forbidden\"\r",
+											"pm.test(\"Response body contains 'Forbidden'\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Forbidden\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "2wewwcc",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/loan/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loan",
+										"1"
+									],
+									"query": [
+										{
+											"key": "Autt",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "invalid loan id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});// ✅ Test if response body contains \"Forbidden\"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/loan/111111",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loan",
+										"111111"
+									],
+									"query": [
+										{
+											"key": "Autt",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "with auth and valid loan id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// ✅ Test if status code is 200 (OK)\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if response is an array (should return updated loan details)\r",
+											"pm.test(\"Response should be an array with updated loan data\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an(\"array\");\r",
+											"    pm.expect(jsonData.length).to.be.greaterThan(0);\r",
+											"});\r",
+											"\r",
+											"// ✅ Test if loan balance is updated correctly\r",
+											"pm.test(\"Loan balance should be updated\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    let updatedLoan = jsonData[0]; // Assuming the first record is the updated loan\r",
+											"\r",
+											"    pm.expect(updatedLoan).to.have.property(\"balance\");\r",
+											"    pm.expect(updatedLoan.balance); // Ensure balance is numeric\r",
+											"});\r",
+											"\r",
+											"// ✅ Test for incorrect ID (loan not found case)\r",
+											"pm.test(\"If loan ID is invalid, should return empty array\", function () {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    if (jsonData.length === 0) {\r",
+											"        pm.expect(jsonData).to.be.an(\"array\").that.is.empty;\r",
+											"    }\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/loan/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"loan",
+										"1"
+									],
+									"query": [
+										{
+											"key": "Autt",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
